@@ -1,0 +1,38 @@
+#include <iostream>
+#include <windows.h>
+#include <ctime>
+using namespace std;
+int main()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	srand(time(0));
+	int n,t,k=0,s=0;
+	cout<<"Введите размер массива"<<endl;
+	cin>>n;
+	int **mass1=new int*[n];
+	for (int i = 0; i < n; i++)
+	{
+		mass1[i]=new int[n];
+	}
+	cout<<"Введите число t"<<endl;
+	cin>>t;
+	cout<<"Вывод массива"<<endl;
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			mass1[i][j]=1+rand()%20;
+			cout<<mass1[i][j]<<"\t";
+			if (mass1[i][j]>=t)
+			{
+				k++;
+				s+=mass1[i][j];
+			}
+		}
+		cout<<"\n\n\n\n";
+	}
+	cout<<endl<<"Сумма = "<<s<<"\tКоличество = "<<k<<endl;
+	system("pause");
+	return 0;
+}
