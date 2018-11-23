@@ -1,0 +1,41 @@
+#include <iostream>
+#include <windows.h>
+#include<string>
+#include <ctime>
+#include <cmath>
+using namespace std;
+int main()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	double s,p,a,b,c;
+    cout <<"Введите геометрическую фугуру:\n1)Кург\n2)Прямоугольник\n3)Треугольник"<<endl;
+	string f;
+	cin>>f;
+	if (f=="Треугольник" || f=="треугольник")
+	{
+		cout <<"Введите три стороны треугольника"<<endl;
+		cin>>a>>b>>c;
+		p=a+b+c;
+       s=sqrt((p/2)*((p/2)-a)*((p/2)-b)*((p/2)-c));
+	   cout<<"Периметр равен "<<p<<"\tПлощадь равна "<<s<<endl;
+	}
+		if (f=="Круг" || f=="круг")
+	{
+		cout <<"Введите радиус"<<endl;
+		cin>>a;
+		p=3.14*2*a;
+       s=3.14*a*a;
+	   cout<<"Периметр равен "<<p<<"\tПлощадь равна "<<s<<endl;
+	}
+		if (f=="Прямоугольник" || f=="прямоугольник")
+	{
+		cout <<"Введите 2 стороны"<<endl;
+		cin>>a>>b;
+		p=(a+b)*2;
+       s=a*b;
+	   cout<<"Периметр равен "<<p<<"\tПлощадь равна "<<s<<endl;
+	}
+	system("pause");
+	return 0;
+}
