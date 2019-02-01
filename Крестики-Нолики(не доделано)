@@ -1,0 +1,93 @@
+#include <iostream>
+#include<string>
+#include <vector>
+#include <algorithm>
+#include <Windows.h>
+using namespace std;
+const char  x='X';
+const char  o='O';
+const char  EMPTY=' ';
+const char  TIE='T';
+const char  NO_ONE='N';
+//Инструкции
+void instructions();
+//Да/нет?
+char askYesOrNo(string question);
+//спрашивает число из диапазона
+int askNumber(string question, int high, int low = 0);
+//кем играеь чел
+char humanPiece();
+//кем играет бот
+char opponent(char piece);
+//Вывод поля
+void displayBoard(const vector <char>&board);
+//Ситуация в игре
+char winner(const vector <char> & board);
+//проверяет можно ли сделать ход
+bool isLegal(const vector <char> &board,int move);
+//ходит пользователь
+int humanMove (const vector <char> &board, char human);
+//ходит бот
+int computerMove (const vector <char> &board, char computer);
+//определяет и называет победителя
+void announceWinner (char winner, char computer, char human);
+int main()
+{
+	SetConsoleOutputCP(1251);
+	SetConsoleCP(1251);
+	instructions();
+	char answer;
+	int move;
+	const int NUM_SQUARES=9;
+	char human=humanPiece();
+	vector <char> board (NUM_SQUARES, EMPTY);
+	
+	answer=askYesOrNo("Вы готовы?");
+
+	system("pause");
+}
+void instructions()
+{
+	cout<<"Добро пожаловать в игру Крестики-Нолики\n";
+	cout<<"Где человек сражается против бот\n";
+	cout<<"Делайте ход вводя число от 0 до 8\n";
+	cout<<"Число соответсвует клетке поля, как показано\n";
+	cout<<"0|1|2\n";
+	cout<<"3|4|5\n";
+	cout<<"6|7|8\n\n";
+	cout<<"Подготвься! Битва скоро начнётся!\n\n";
+}
+char askYesOrNo(string question)
+{
+	char answer;
+	do
+	{
+cout<<question<<"(y/n)\n\n";
+cin>>answer;
+	}while (answer!='y' && answer!='n');
+	return answer;
+}
+int askNumber(string question, int high, int low )
+{
+	int num;
+	do
+	{
+		cout<<question<<" ( "<<low<<" - "<< high<<"): "<<endl;
+		cin>>num;
+	}while(num>high || num<low);
+	return num;
+}
+char humanPiece()
+{
+	char go_first=askYesOrNo("Вы хотите ходить первым?");
+	if (go_first=='y')
+	{
+		cout<<"Вы ходите первым. Это вам понадобиться XD\n";
+		return x;
+	}
+	else
+	{
+        cout<<"Храбрость вас погубит... Я хожу первым\n";
+		return o;
+	}
+}
